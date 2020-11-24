@@ -1,0 +1,15 @@
+I first created a prototype which I then modified to create the final demo. I used Jet-brains Rider with Unity. My code was organised into several categories with namespaces to match each of the directory names. The images I used to create the clothes shop environment were from popular search engines Google and Bing. I used a tilemap to create the clothes shop with a wood floor a white wall and placed the other sprites manually split between foreground and background. I opted for a design where trigger zones would bring up UI elements.
+
+Walking into a shop dummy would let the player take the item into their inventory (or put it back), walking to the counter lets the player purchase their selected clothes and a changing room allows the player to change clothes.
+
+To manage the different control panels which the player may use to navigate and manipulate the world I used the 'Dialog Manager' Mono Behavior. Some dialogs where multiple items are shown (such as checkout) instantiate a prefab multiple times to represent all of the elements.
+
+The player's logic was split up between four Mono Behavior classes: Wallet, Clothing, Movement and Inventory. The Player's Inventory contains items and can check if a certain item is in the inventory. The Player Wallet Behavior controls and displays how much cash the player has in their possession. The Movement Behavior just moves the player around, nothing fancy here. Finally the Player Clothing class changes the player's sprite to match the new outfit.
+
+The last thing I did was spend some time polishing and bug fixing.
+
+In terms of programming I created each feature in tandem editing different files until everything got to be as I wished it to be. I had a functional prototype within hours and a fleshed out experience by the end of the allotted time as I am writing this.
+
+Thank you for the opportunity.
+
+- Charlie Sloan
