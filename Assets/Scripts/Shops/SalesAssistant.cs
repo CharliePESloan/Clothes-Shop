@@ -8,13 +8,6 @@ namespace Shops
     
     public class SalesAssistant : MonoBehaviour
     {
-        [SerializeField] private PlayerInventory _playerInventory;
-
-        private void Start()
-        {
-            _playerInventory = FindObjectOfType<PlayerInventory>();
-        }
-
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.CompareTag("Player"))

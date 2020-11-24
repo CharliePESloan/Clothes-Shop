@@ -46,9 +46,9 @@ namespace Shops
             }
             else
             {
-                _currentShopItem.ReplaceItem();
-                _playerInventory.Remove(_currentItem);
                 Close();
+                _currentShopItem.ReplaceItem();
+                _playerInventory.RemoveFromShop(_currentItem);
             }
         }
 

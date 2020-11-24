@@ -14,14 +14,11 @@ namespace Shops
     public class PurchaseDialog : Dialog
     {
         [SerializeField] private PlayerWallet playerWallet;
-        [SerializeField] private PlayerClothing playerClothing;
         [SerializeField] private PlayerInventory playerInventory;
-        [SerializeField] private Text purchaseDescriptionText;
         [SerializeField] private Text priceText;
         [SerializeField] private GameObject itemsOfClothingPanel;
         [SerializeField] private Button purchaseButton;
         [SerializeField] private GameObject clothingPrefab;
-        // [SerializeField] private Button purchaseButton;
 
         private List<BaseApparel> _currentItems;
 
