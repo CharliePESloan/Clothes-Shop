@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Player
 {
@@ -22,6 +23,13 @@ namespace Player
         public bool Wearing(BaseApparel item)
         {
             return item.Equals(currentClothes);
+        }
+
+        private void Start()
+        {
+            BaseApparel clothes = currentClothes;
+            currentClothes = null;
+            SetClothing(clothes);
         }
     }
 }

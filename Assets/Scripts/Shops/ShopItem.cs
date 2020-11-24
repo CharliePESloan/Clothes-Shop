@@ -6,36 +6,63 @@ namespace Shops
     using Player;
     using Items;
     using Items.Apparel;
+    using Dialogs;
     
     public class ShopItem : MonoBehaviour
     {
         [SerializeField] private BaseItem item;
+        [SerializeField] private GameObject itemSprite;
 
-        private PurchaseDialogController purchaseDialog;
-        private WearDialogController wearDialog;
-        private PlayerInventory playerInventory;
+        // public BaseItem Item;
+
+        private TakeDialog takeDialog;
+        private WearDialog wearDialog;
+        private ReplaceDialog replaceDialog;
+        private PlayerInventory _playerInventory;
+        
+        private bool _hasItem = true;
+        public bool HasItem => _hasItem;
 
         private void Awake()
         {
             // Gather the required objects
-            purchaseDialog = FindObjectOfType<PurchaseDialogController>();
-            wearDialog = FindObjectOfType<WearDialogController>();
-            playerInventory = FindObjectOfType<PlayerInventory>();
+            takeDialog = FindObjectOfType<TakeDialog>();
+            wearDialog = FindObjectOfType<WearDialog>();
+            replaceDialog = FindObjectOfType<ReplaceDialog>();
+            _playerInventory = FindObjectOfType<PlayerInventory>();
+        }
+
+        public void TakeItem()
+        {
+            itemSprite.SetActive(false);
+            _hasItem = false;
+        }
+
+        public void ReplaceItem()
+        {
+            itemSprite.SetActive(true);
+            _hasItem = true;
         }
 
         // Open a dialog when the player walks over an item
         private void OnTriggerEnter2D(Collider2D other)
         {
-            BaseApparel clothing = (BaseApparel) item;
-            if (other.gameObject.CompareTag("Player"))
+            BaseApparel clothing = item as BaseApparel;
+            if (other.CompareTag("Player"))
             {
-                if (playerInventory.Contains(clothing))
+                if (_hasItem)
                 {
-                    wearDialog.Open(clothing);
+                    takeDialog.Setup(item,this);
+                    takeDialog.Open();
+                    wearDialog.Setup(clothing,this);
                 }
                 else
                 {
-                    purchaseDialog.Open(item);
+                    if (other.GetComponent<PlayerInventory>().ContainsFromShop(clothing))
+                    {
+                        replaceDialog.Setup(item, this);
+                        replaceDialog.Open();
+                    }
                 }
             }
         }
@@ -45,8 +72,7 @@ namespace Shops
         {
             if (other.gameObject.CompareTag("Player"))
             {
-                purchaseDialog.Close();
-                wearDialog.Close();
+                DialogManager.CloseAllShop();
             }
         }
     }

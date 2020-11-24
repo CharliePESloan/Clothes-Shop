@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2469aa4e8f474d84821d3895edaf78b2, type: 3}
+  m_Name: White Top Black Dress
+  m_EditorClassIdentifier: 
+  name: White Top and Black Dress
+  icon: {fileID: 0}
+  price: 3000
+  playerSprite: {fileID: 21300000, guid: 4b6101316e3c9af49a42d1853f529f9f, type: 3}
